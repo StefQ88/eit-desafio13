@@ -10,17 +10,25 @@ function App() {
 
   const [tasks, setTasks] = useState([])
 
+  //recibe tarea y la agrega a la lista
   const handleAddTask = (task) => {
-    
+    setTasks ([...tasks, task])
+  }
+
+  //eliminar tarea
+  const handleDeleteTask = (id) => {
+    const updateTasks = tasks.filter((task) => task.id !== id)
+    setTasks = updateTasks
   }
 
 
-
-
   return (
-    <>
-  
-    </>
+    <div>
+      <h1>Lista de tareas</h1>
+      <TaskForm onAddTask={handleAddTask}/> 
+
+      
+    </div>
   )
 }
 
