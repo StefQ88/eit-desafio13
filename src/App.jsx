@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import {TaskForm} from './components/TaskForm';
-import { TaskList } from './components/TaskList';
+import { useState } from "react";
+import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
+import AppText from './components/AppText'
 
-import './sass/main.scss';
-
-
+import "./sass/main.scss";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
 
-  const [tasks, setTasks] = useState([])
-
-  //recibe tarea y la agrega a la lista
+  //se llama cuando se envia el formulario
   const handleAddTask = (task) => {
-    setTasks ([...tasks, task])
-  }
+    setTasks([...tasks, task]);
+  };
 
   //eliminar tarea
   const handleDeleteTask = (id) => {
-    const updateTasks = tasks.filter((task) => task.id !== id)
-    setTasks = updateTasks
-  }
-
+    const updateTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updateTasks);
+  };
 
   return (
-    <div>
-      <h1>Lista de tareas</h1>
-      <TaskForm onAddTask={handleAddTask}/> 
+    <main className="app">
+      <AppText as="h1" text="Lista de tareas"/>
 
-      
-    </div>
-  )
+      <div className="app__grid">
+        <section className="app__form">
+          <TaskForm onAddTask={handleAddTask} />
+        </section>
+
+        <section className="app__list">
+          <AppText as="h2" text="Tareas agregadas"/>
+          <TaskList tasks={tasks} onDeleteTask={handleDeleteTask} />
+        </section>
+
+      </div>
+    </main>
+  );
 }
 
-export default App
+export default App;
