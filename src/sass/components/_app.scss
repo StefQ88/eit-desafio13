@@ -1,0 +1,48 @@
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  h1 {
+    color: var(--color-ligth);
+    
+  }
+
+  h2 {
+    color: var(--color);
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__form {
+    flex: 1; // Igual espacio
+    min-width: 300px;
+    min-height: 200px;
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    padding: 1rem;
+    margin:  1rem 0;
+    box-shadow: var(--shadow-smooth);
+  }
+
+
+
+  &__list {
+    flex: 1; 
+    min-width: 300px;
+    min-height: 500px;
+    max-height: 500px;
+    background-color: var(--color-ligth);
+    border-radius: 8px;
+    padding: 1rem;
+    margin:  1rem 0;
+    box-shadow: var(--shadow-smooth);
+  }
+
+}

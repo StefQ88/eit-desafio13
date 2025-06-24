@@ -21,15 +21,16 @@ function App() {
 
   return (
     <main className="app">
-      <AppText as="h1" text="Lista de tareas"/>
 
       <div className="app__grid">
+
         <section className="app__form">
+          <AppText as="h1" text="Agregar nueva tarea" />
           <TaskForm onAddTask={handleAddTask} />
         </section>
 
         <section className="app__list">
-          <AppText as="h2" text="Tareas agregadas"/>
+          <AppText as="h2" text="Lista de tareas" />
           <TaskList tasks={tasks} onDeleteTask={handleDeleteTask} />
         </section>
 

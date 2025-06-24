@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AppText from "./AppText";
 import Button from "./Button";
 
@@ -31,7 +31,9 @@ const TaskForm = ({ onAddTask }) => {
     const trimmed = values.task.trim(); // elimino espacios en el inicio y al final
 
     if (trimmed === "") {
-      setError({ task: "Debe escribir una tarea antes de agregar a la lista." });
+      setError({
+        task: "Debe escribir una tarea antes de agregar a la lista.",
+      });
       return;
     }
 
@@ -56,28 +58,36 @@ const TaskForm = ({ onAddTask }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div>
-          <AppText as="label" htmlFor="task" text="Nueva tarea:" />
+        <div className="form">
+          <div className="form__group">
+            <AppText as="label" htmlFor="task" text="Nueva tarea:" />
+            <input
+              type="text"
+              id="task"
+              name="task"
+              autoComplete="off"
+              value={values.task}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              placeholder="Escribe una tarea"
+              className={`form__input ${
+                error.task ? "form__input--error" : ""
+              }`}
+            />
+          </div>
 
-          <input
-            type="text"
-            id="task"
-            name="task"
-            autoComplete="off"
-            value={values.task}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            placeholder="Escribe una tarea"
-            className={error.task ? "input-error" : ""}
+          <AppText
+            as="span"
+            text={error.task}
+            className={`form__error ${
+              error.task ? "form__error--visible" : ""
+            }`}
           />
-
-          {error && (
-            <AppText as="span" text={error.task} className="color-error" />
-          )}
 
           <Button
             type="submit"
             label="Agregar tarea"
+            className="form__btn"
             disabled={values.task.trim() === ""}
           />
         </div>
