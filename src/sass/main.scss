@@ -1,10 +1,11 @@
+@use "./utils/variables";
+@use "./utils/mixins";
+@use "./utils/utils";
 
+@use "./layout/layout";
 
-@import './base/base';
-@import './base/reset';
-
-@import './components/app';
-@import './components/taskForm';
-@import './components/taskList'
-
-
+@use "./base/base";
+@use "./base/reset";
+@use "./components/app";
+@use "./components/taskForm";
+@use "./components/taskList";

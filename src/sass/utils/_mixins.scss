@@ -1,0 +1,9 @@
+@use "variables" as *;
+
+@mixin container-widths {
+  @each $bp, $min in $grid-breakpoints {
+    @media (min-width: $min) {
+      max-width: map-get($grid-width, $bp);
+    }
+  }
+}

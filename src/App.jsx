@@ -6,23 +6,23 @@ import AppText from './components/AppText'
 import "./sass/main.scss";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]); //estado que contiene todas las tareas
 
-  //se llama cuando se envia el formulario
+  //se llama cuando se envia el formulario y agrega nueva tarea al array
   const handleAddTask = (task) => {
     setTasks([...tasks, task]);
   };
 
-  //eliminar tarea
+  //filtra la lista y elimina la tarea por id
   const handleDeleteTask = (id) => {
     const updateTasks = tasks.filter((task) => task.id !== id);
-    setTasks(updateTasks);
+    setTasks(updateTasks); // actualiza el estado con la nueva lista
   };
 
   return (
-    <main className="app">
+    <main className="app container">
 
-      <div className="app__grid">
+      <div className="app__grid d-flex justify-between align-start flex-wrap">
 
         <section className="app__form">
           <AppText as="h1" text="Agregar nueva tarea" />

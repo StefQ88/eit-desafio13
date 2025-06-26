@@ -1,60 +1,46 @@
-
 .form {
-    display: flex;
-    flex-direction: column;
+  color: var(--color-ligth);
+
+  &__group {
+    gap: 0.25rem;
+  }
+
+  &__input {
+    max-width: 360px;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: var(--color);
+
+    &--error {
+      border: 1.2px solid var(--color-error);
+    }
+  }
+
+  &__error {
+    height: 1.25rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  &__btn {
+    margin-top: 3rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: var(--color-secondary);
     color: var(--color-ligth);
-    // gap: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
 
-    &__group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
+    &:focus {
+      outline: none;
     }
 
-    &__input {
-        max-width: 360px;
-        padding: 0.5rem;
-        border-radius: 4px;
-        color: var(--color);
-
-        &--error {
-            border: 1.2px solid var(--color-error);
-        }
+    &:hover {
+      background-color: var(--color-secondary-hover);
     }
-
-    &__error {
-        height: 1.25rem;
-        font-size: 0.8rem;
-        margin-top: 0.5rem;
-        display: block;
-    }
-
-    &__btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-self: flex-start;
-        margin-top: 2rem;
-
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        background-color: var(--color-terciary);
-        color: var(--color-ligth);
-        cursor: pointer;
-        transition: background-color 0.3s, box-shadow 0.3s;
-
-
-        &:focus {
-            outline: none;
-        }
-
-        &:hover {
-            background-color: hsl(20, 76%, 45%);
-        }
-    }
-
-
+  }
 }

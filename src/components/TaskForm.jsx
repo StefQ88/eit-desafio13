@@ -4,9 +4,9 @@ import Button from "./Button";
 
 const TaskForm = ({ onAddTask }) => {
   const [values, setValues] = useState({ task: "" }); // estado para guardar el valor del input
-  const [error, setError] = useState({ task: "" }); // estado para mostrar errores
+  const [error, setError] = useState({ task: "" }); // estado para guardar errores
 
-  //se ejecuta cada vez que se escribe en el input
+  //se ejecuta cada vez que se escribe en el input y actualiza el estado
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -42,15 +42,16 @@ const TaskForm = ({ onAddTask }) => {
       return;
     }
 
-    // si pasa la validacion se crea la nueva tarea
+    // si pasa la validacion se crea un objeto con la nueva tarea con id y texto
     const newTask = {
       id: Date.now(),
       text: trimmed,
     };
 
-    // paso la nueva tarea a App
+    // llamo a la funcion para agregar la nueva tarea
     onAddTask(newTask);
 
+    //limpio formulario
     setValues({ task: "" });
     setError({ task: "" });
   };
@@ -58,8 +59,8 @@ const TaskForm = ({ onAddTask }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="form">
-          <div className="form__group">
+        <div className="form d-flex flex-column">
+          <div className="form__group d-flex flex-column">
             <AppText as="label" htmlFor="task" text="Nueva tarea:" />
             <input
               type="text"
@@ -67,8 +68,8 @@ const TaskForm = ({ onAddTask }) => {
               name="task"
               autoComplete="off"
               value={values.task}
-              onChange={handleChange}
-              onFocus={handleFocus}
+              onChange={handleChange} //llama a la funcion al escribir
+              onFocus={handleFocus} //limpia errores al enfocar
               placeholder="Escribe una tarea"
               className={`form__input ${
                 error.task ? "form__input--error" : ""
@@ -87,8 +88,7 @@ const TaskForm = ({ onAddTask }) => {
           <Button
             type="submit"
             label="Agregar tarea"
-            className="form__btn"
-            disabled={values.task.trim() === ""}
+            className="form__btn d-flex justify-center  align-selft-start"
           />
         </div>
       </form>
